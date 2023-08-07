@@ -1,4 +1,49 @@
-:root {
+body {
+    background: linear-gradient(to bottom, #000000, #FF0000);
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
+    height: 100vh; /* Set the body height to 100vh to fill the viewport */
+  }
+  
+  h1 {
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  div {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    border: 1px solid #FFFFFF;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+  
+  button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #990000;
+  }
+  
+  #resultContainer {
+    margin-top: 20px;
+  }
+  
