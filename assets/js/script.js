@@ -1,5 +1,5 @@
 let searchBtnEl = document.getElementById('searchButton');
-let searchInput = document.getElementById('searchInput');
+let searchInputEl = document.getElementById('searchInput');
 let resultContainerEl = document.getElementById('resultContainer');
 
 var date = new Date().getTime();
@@ -11,11 +11,11 @@ const apikey = "20e00c1407fc4a0bb65638f058fde679";
 const hashValue = "54b9b99a9e2badca952f126a7e14540e";
 
 function marvelSearch() {
-    searchInput.addEventListener('keypress', function (event) {
+    searchInputEl.addEventListener('keypress', function (event) {
 
         if (event.key === 'Enter') {
 
-            let requesturl = `http://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${apikey}&hash=${hashValue}&name=${searchInput.value}`;
+            let requesturl = `http://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${apikey}&hash=${hashValue}&name=${searchInputEl.value}`;
 
             fetch(requesturl)
                 .then(function (response) {
@@ -43,13 +43,19 @@ function marvelSearch() {
                     marvelDesc.textContent = marvelCharDescipt;
                     resultContainerEl.appendChild(marvelDesc);
 
+                    searchInputEl.value = '';
+
                     console.log(marvelCharName);
                     console.log(marvelCharDescipt);
                 })
+            clearSearch()
             event.preventDefault();
-            document.getElementById(searchBtnEl);
         }
     })
 }
 
 marvelSearch();
+
+function clearSearch() {
+    resultContainerEl.textContent = '';
+}
