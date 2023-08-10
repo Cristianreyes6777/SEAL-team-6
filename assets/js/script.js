@@ -34,25 +34,28 @@ function marvelSearch() {
             })
             .then(function(marvalData) {
                 console.log(marvalData)
+                if (marvalData.data.results.length > 0) {
+                    const marvelCharName = marvalData.data.results[0].name;
+                    const marvelCharDescipt = marvalData.data.results[0].description;
+                    const marvelPic = marvalData.data.results[0].thumbnail.path + ".jpg"
 
-                const marvelCharName = marvalData.data.results[0].name;
-                const marvelCharDescipt = marvalData.data.results[0].description;
-                const marvelPic = marvalData.data.results[0].thumbnail.path + ".jpg"
+                    console.log('mp', marvelPic);
 
-                console.log('mp', marvelPic);
+                    let marvelPicture = document.createElement('img');
+                    marvelPicture.src = marvelPic;
+                    resultContainerEl.appendChild(marvelPicture);
 
-                let marvelPicture = document.createElement('img');
-                marvelPicture.src = marvelPic;
-                resultContainerEl.appendChild(marvelPicture);
+                    let marvelName = document.createElement('p');
+                    marvelName.textContent = marvelCharName;
+                    resultContainerEl.appendChild(marvelName);
 
-                let marvelName = document.createElement('p');
-                marvelName.textContent = marvelCharName;
-                resultContainerEl.appendChild(marvelName);
-
-                let marvelDesc = document.createElement('p');
-                marvelDesc.classList.add('desc')
-                marvelDesc.textContent = marvelCharDescipt;
-                resultContainerEl.appendChild(marvelDesc);
+                    let marvelDesc = document.createElement('p');
+                    marvelDesc.classList.add('desc')
+                    marvelDesc.textContent = marvelCharDescipt;
+                    resultContainerEl.appendChild(marvelDesc);
+                } else {
+                resultContainerEl.textContent = "Character not in Marvel API database";
+                }
 
                 searchInputEl.value = '';
             });
