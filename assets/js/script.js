@@ -14,8 +14,6 @@ function marvelSearch() {
     searchInputEl.addEventListener('keypress', function (event) {
 
         if (event.key === 'Enter') {
-            performSearch(event);
-        }
         
     });
 
