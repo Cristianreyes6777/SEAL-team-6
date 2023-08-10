@@ -2,9 +2,6 @@ let searchBtnEl = document.getElementById('searchButton');
 let searchInputEl = document.getElementById('searchInput');
 let resultContainerEl = document.getElementById('resultContainer');
 
-
-
-
 var date = new Date().getTime();
 
 // const superHeroApi = "6892054020806695";
