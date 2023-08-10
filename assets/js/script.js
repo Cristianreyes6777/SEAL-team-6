@@ -2,33 +2,44 @@ let searchBtnEl = document.getElementById('searchButton');
 let searchInputEl = document.getElementById('searchInput');
 let resultContainerEl = document.getElementById('resultContainer');
 
+
+
+
 var date = new Date().getTime();
 
 // const superHeroApi = "6892054020806695";
-
 let timestamp = "1691453170698";
 const apikey = "20e00c1407fc4a0bb65638f058fde679";
 const hashValue = "54b9b99a9e2badca952f126a7e14540e";
 
 function marvelSearch() {
-    searchInputEl.addEventListener('keypress', function (event) {
-
+    searchInputEl.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
+            performSearch();
+            event.preventDefault();
+        }
+    });
 
-            let requesturl = `http://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${apikey}&hash=${hashValue}&name=${searchInputEl.value}`;
+    searchBtnEl.addEventListener('click', function(event) {
+        performSearch();
+        event.preventDefault();
+    });
 
-            fetch(requesturl)
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (marvalData) {
-                    console.log(marvalData)
-                
+    function performSearch() {
+        let requesturl = `http://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${apikey}&hash=${hashValue}&name=${searchInputEl.value}`;
+
+        fetch(requesturl)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(marvalData) {
+                console.log(marvalData)
+                if (marvalData.data.results.length > 0) {
                     const marvelCharName = marvalData.data.results[0].name;
                     const marvelCharDescipt = marvalData.data.results[0].description;
                     const marvelPic = marvalData.data.results[0].thumbnail.path + ".jpg"
 
-                    console.log('mp',marvelPic);
+                    console.log('mp', marvelPic);
 
                     let marvelPicture = document.createElement('img');
                     marvelPicture.src = marvelPic;
@@ -42,20 +53,18 @@ function marvelSearch() {
                     marvelDesc.classList.add('desc')
                     marvelDesc.textContent = marvelCharDescipt;
                     resultContainerEl.appendChild(marvelDesc);
+                } else {
+                resultContainerEl.textContent = "Character not in Marvel API database";
+                }
 
-                    searchInputEl.value = '';
-
-                    console.log(marvelCharName);
-                    console.log(marvelCharDescipt);
-                })
-            clearSearch()
-            event.preventDefault();
-        }
-    })
+                searchInputEl.value = '';
+            });
+        clearSearch();
+    }
 }
-
-marvelSearch();
 
 function clearSearch() {
     resultContainerEl.textContent = '';
 }
+
+marvelSearch();
