@@ -98,10 +98,11 @@ const inputBox = document.getElementById("searchInput")
 inputBox.onkeyup = function(){
     let result = [];
     let input = inputBox.value;
-    if(input.length){
-        result = availableKeywords.filter((keyword) => {
-   return keyword[0].toLowerCase() === input[0].toLowerCase();
-         });
+    if(input.length)
+      result = availableKeywords.filter((keyword) => {
+        return keyword.toLowerCase().startsWith(input.toLowerCase());
+        });
+
          display(result);
 
         if(!result.length) {
