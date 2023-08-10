@@ -88,3 +88,20 @@ button:hover {
 .result-box ul li:hover {
   background-color: #f5f5f5;
 }
+
+#resultContainer {
+  margin-top: 20px;
+}
+
+#resultContainer, p {
+font-size: 26px;
+
+}
+
+
+img {
+height: 320px;
+width: auto;
+border-radius: 10px;
+border: 10px #002d5c solid;
+}
