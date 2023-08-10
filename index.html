@@ -98,7 +98,7 @@ const inputBox = document.getElementById("searchInput")
 inputBox.onkeyup = function(){
     let result = [];
     let input = inputBox.value;
-    if(input.length)
+    if(input.length){
       result = availableKeywords.filter((keyword) => {
         return keyword.toLowerCase().startsWith(input.toLowerCase());
         });
