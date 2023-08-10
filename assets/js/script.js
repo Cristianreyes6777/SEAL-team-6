@@ -5,55 +5,56 @@ let resultContainerEl = document.getElementById('resultContainer');
 var date = new Date().getTime();
 
 // const superHeroApi = "6892054020806695";
-
 let timestamp = "1691453170698";
 const apikey = "20e00c1407fc4a0bb65638f058fde679";
 const hashValue = "54b9b99a9e2badca952f126a7e14540e";
 
 function marvelSearch() {
-    searchInputEl.addEventListener('keypress', function (event) {
-
+    searchInputEl.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
-        
+            performSearch();
+            event.preventDefault();
+        }
     });
 
-    // Adding event listener so search burron works
-    searchBtnEl.addEventListener('click', performSearch);
-}
+    searchBtnEl.addEventListener('click', function(event) {
+        performSearch();
+        event.preventDefault();
+    });
 
-function performSearch(event) {
-    let requesturl = `http://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${apikey}&hash=${hashValue}&name=${searchInputEl.value}`;
+    function performSearch() {
+        let requesturl = `http://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${apikey}&hash=${hashValue}&name=${searchInputEl.value}`;
 
-    fetch(requesturl)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (marvalData) {
-            console.log(marvalData)
-        
-            const marvelCharName = marvalData.data.results[0].name;
-            const marvelCharDescipt = marvalData.data.results[0].description;
-            const marvelPic = marvalData.data.results[0].thumbnail.path + ".jpg"
+        fetch(requesturl)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(marvalData) {
+                console.log(marvalData)
 
-            console.log('mp',marvelPic);
+                const marvelCharName = marvalData.data.results[0].name;
+                const marvelCharDescipt = marvalData.data.results[0].description;
+                const marvelPic = marvalData.data.results[0].thumbnail.path + ".jpg"
 
-            let marvelPicture = document.createElement('img');
-            marvelPicture.src = marvelPic;
-            resultContainerEl.appendChild(marvelPicture);
+                console.log('mp', marvelPic);
 
-            let marvelName = document.createElement('p');
-            marvelName.textContent = marvelCharName;
-            resultContainerEl.appendChild(marvelName);
+                let marvelPicture = document.createElement('img');
+                marvelPicture.src = marvelPic;
+                resultContainerEl.appendChild(marvelPicture);
 
-            let marvelDesc = document.createElement('p');
-            marvelDesc.classList.add('desc')
-            marvelDesc.textContent = marvelCharDescipt;
-            resultContainerEl.appendChild(marvelDesc);
+                let marvelName = document.createElement('p');
+                marvelName.textContent = marvelCharName;
+                resultContainerEl.appendChild(marvelName);
 
-            searchInputEl.value = '';
-        })
-    clearSearch()
-    event.preventDefault();
+                let marvelDesc = document.createElement('p');
+                marvelDesc.classList.add('desc')
+                marvelDesc.textContent = marvelCharDescipt;
+                resultContainerEl.appendChild(marvelDesc);
+
+                searchInputEl.value = '';
+            });
+        clearSearch();
+    }
 }
 
 function clearSearch() {
