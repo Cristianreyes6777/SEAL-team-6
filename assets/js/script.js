@@ -46,10 +46,15 @@ function marvelSearch() {
                     marvelName.textContent = marvelCharName;
                     resultContainerEl.appendChild(marvelName);
 
+                    let marvelDescContainer = document.createElement('div');
+                    marvelDescContainer.classList.add('desc-container');
+
                     let marvelDesc = document.createElement('p');
                     marvelDesc.classList.add('desc')
                     marvelDesc.textContent = marvelCharDescipt;
-                    resultContainerEl.appendChild(marvelDesc);
+                    marvelDescContainer.appendChild(marvelDesc);
+                    resultContainerEl.appendChild(marvelDescContainer);
+                    
                 } else {
                 resultContainerEl.textContent = "Character not in Marvel API database";
                 }
