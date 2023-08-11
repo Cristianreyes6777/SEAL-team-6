@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,45 @@
     <link rel="stylesheet" href="./star_wars/css/starwarsstyle.css">
     <title>Star Wars!</title>
 </head>
+
 <body class="bg-black">
-    <header class="flex justify-center pt-6 pl-20">
-        <img src="./star_wars/images/Star_Wars-Logo.png" alt="star wars logo" height="200" width="350" >
+    <header class="flex justify-center pt-6 pl-10">
+        <img src="./star_wars/images/Star_Wars-Logo.png" alt="star wars logo" height="200" width="350">
     </header>
     <main>
-        <div class="flex justify-center pt-6 pr-20" >
+        <!-- <div class="flex justify-center pt-6 pr-20" >
             <label for="searchInput">Search your favorite character:</label>
             <input class="w-80 h-10 text-xl text-rose-600 font-bold rounded" type="text" id="searchInput" placeholder=" Enter character name">
             <button class="bg-white rounded w-20 font-bold text-lg bg-yellow-200"id="searchButton">Search</button>
-          </div>
+          </div> -->
     </main>
+    <div class="flex justify-center pl-10 pt-14">
+        <select id="selectTable" class="w-48 rounded font-bold text-lg bg-yellow-200">
+            <option>Choose Below</option>
+            <option class="options" value="boba">Boba</option>
+            <option class="options" value="bossk">Bossk</option>
+            <option class="options" value="C-3PO">C-3PO</option>
+            <option class="options" value="chewbacca">Chewbacca</option>
+            <option class="options" value="maul">Darth Maul</option>
+            <option class="options" value="han">Han Solo</option>
+            <option class="options" value="jabba">Jabba The Hutt</option>
+            <option class="options" value="anakin">Anakin Skywalker</option>
+            <option class="options" value="lando">Lando</option>
+            <option class="options" value="leia">Leia</option>
+            <option class="options" value="luke">Luke SkyWalker</option>
+            <option class="options" value="padmé">Padme Amidala</option>
+            <option class="options" value="palpatine">Emperor Palpatine</option>
+            <option class="options" value="Qui-Gon">Qui-Gon jinn</option>
+            <option class="options" value="r2">R2-D2</option>
+            <option class="options" value="yoda">Master Yoda</option>
+        </select>
+    </div>
 
+    <div id="resultContainer" class="flex justify-center pt-4 pl-4 h-96"></div>
+    <div id="nameBlock" class="flex justify-center text-4xl font-bold text-yellow-300 pt-4"></div>
+    <div id="details"></div>
 
     <script src="./star_wars/js/starwars.js"></script>
 </body>
+
 </html>
