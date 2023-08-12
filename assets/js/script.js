@@ -51,7 +51,11 @@ function marvelSearch() {
 
                     let marvelDesc = document.createElement('p');
                     marvelDesc.classList.add('desc')
-                    marvelDesc.textContent = marvelCharDescipt;
+                    if (marvelCharDescipt.length > 0) {
+                        marvelDesc.textContent = marvelCharDescipt;
+                    } else {
+                        marvelDesc.textContent = "Description coming soon";
+                    }
                     marvelDescContainer.appendChild(marvelDesc);
                     resultContainerEl.appendChild(marvelDescContainer);
                     
