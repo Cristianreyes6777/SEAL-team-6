@@ -9,6 +9,19 @@ let timestamp = "1691453170698";
 const apikey = "20e00c1407fc4a0bb65638f058fde679";
 const hashValue = "54b9b99a9e2badca952f126a7e14540e";
 
+function saveToLocalStorage(data) {
+    localStorage.setItem('marvelCharacter', JSON.stringify(data));
+}
+
+function loadFromLocalStorage() {
+    const savedData = localStorage.getItem('marvelCharacter');
+    if (savedData) {
+        return JSON.parse(savedData);
+    }
+    return null;
+}
+
+
 function marvelSearch() {
     searchInputEl.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
@@ -58,6 +71,12 @@ function marvelSearch() {
                     }
                     marvelDescContainer.appendChild(marvelDesc);
                     resultContainerEl.appendChild(marvelDescContainer);
+
+                    saveToLocalStorage({
+                        name: marvelCharName,
+                        description: marvelCharDescipt,
+                        image: marvelPic
+                    });
                     
                 } else {
                 resultContainerEl.textContent = "Character not in Marvel API database";
@@ -72,5 +91,29 @@ function marvelSearch() {
 function clearSearch() {
     resultContainerEl.textContent = '';
 }
+
+function initSavedData() {
+    const savedData = loadFromLocalStorage();
+    if (savedData) {
+        const marvelPicture = document.createElement('img');
+        marvelPicture.src = savedData.image;
+        resultContainerEl.appendChild(marvelPicture);
+
+        const marvelName = document.createElement('p');
+        marvelName.textContent = savedData.name;
+        resultContainerEl.appendChild(marvelName);
+
+        const marvelDescContainer = document.createElement('div');
+        marvelDescContainer.classList.add('desc-container');
+
+        const marvelDesc = document.createElement('p');
+        marvelDesc.classList.add('desc');
+        marvelDesc.textContent = savedData.description;
+        marvelDescContainer.appendChild(marvelDesc);
+        resultContainerEl.appendChild(marvelDescContainer);
+    }
+}
+
+initSavedData();
 
 marvelSearch();
