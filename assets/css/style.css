@@ -89,7 +89,8 @@
 
 /* CSS of main body */
 body {
-  background: linear-gradient(to bottom, #000000, #FF0000);
+  background-image: url(../images/marvel_background.jpg);
+  /* background: linear-gradient(to bottom, #000000, #FF0000); */
   color: #FFFFFF;
   font-family: Arial, sans-serif;
   margin: 0;
