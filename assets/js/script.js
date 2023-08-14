@@ -36,7 +36,7 @@ function marvelSearch() {
     });
 
     function performSearch() {
-        let requesturl = `http://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${apikey}&hash=${hashValue}&name=${searchInputEl.value}`;
+        let requesturl = `https://gateway.marvel.com/v1/public/characters?ts=${timestamp}&apikey=${apikey}&hash=${hashValue}&name=${searchInputEl.value}`;
 
         fetch(requesturl)
             .then(function(response) {
