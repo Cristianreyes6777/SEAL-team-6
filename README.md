@@ -21,8 +21,9 @@ SEAL-team-6 is a collaborative project created by Rodrigo Rivera, Kris Hinojosa,
 
 ## Screenshots
 
-![Screenshot 1](https://github.com/Cristianreyes6777/SEAL-team-6/assets/137252960/c4349f4d-dd0c-466e-87d5-bebae159633b)
-
+![Screenshot 1](https://github.com/Cristianreyes6777/SEAL-team-6/assets/137252960/eb5bea1b-9819-4dd1-8095-2faf9766bfd9)
+![Screenshot 2](https://github.com/Cristianreyes6777/SEAL-team-6/assets/137252960/4b419ba6-966d-4261-adaa-eceee8773daa)
+![Screenshot 3](https://github.com/Cristianreyes6777/SEAL-team-6/assets/137252960/75a6f041-126c-41d8-90c8-c48df1d1d7d6)
 
 ## Getting Started
 
